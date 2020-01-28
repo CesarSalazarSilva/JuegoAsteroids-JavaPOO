@@ -1,0 +1,11 @@
+Funcion 	           	AutoEvaluacion	
+Clases y Estructuras     		1
+CreateSpace               		1
+MoveElement		 		1
+ShootElement				1
+GameLoop				1
+textifySpace y printSpace		1
+Menu Usuario				1
+
+
+
