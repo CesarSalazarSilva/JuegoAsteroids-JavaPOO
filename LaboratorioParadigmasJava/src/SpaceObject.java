@@ -1,34 +1,60 @@
 import static java.lang.Math.toRadians;
 
 public class SpaceObject {
-    /* Atributos */
-    private double posX;
-    private double posY;
-    private double velocidad;
-    private double angulo;
-    private double recorrido;
-    private double hitbox;
-    private double seed;
-    private double vida;
+    //Atributos de Movimiento.
+    protected double posX;
+    protected double posY;
+    protected double velocidad;
+    protected double angulo;
+    protected double recorrido;
+    //Atributos Caracteristicos.
+    protected double hitbox;
+    //Atributos Generales.
+    protected double seed;
 
+    public void SpaceObject(double posX, double posY, double velocidad, double angulo, double recorrido, double hitbox, double seed){
+        this.posX = posX;
+        this.posY = posY;
+        this.velocidad = velocidad;
+        this.angulo = angulo;
+        this.recorrido = recorrido;
+        this.hitbox = hitbox;
+        this.seed = seed;
+    }
 
-    /* Metodo que mueve un elemento espacial a un t+1. */
-    public void moveElement(double angulo, double velocidad) {
-        if (velocidad > 0) {
-            this.velocidad = this.velocidad + velocidad;
-            this.angulo = this.angulo + angulo;
-            double angulogradian = toRadians(this.angulo);
-            this.posX = (int) Math.round(this.posX + this.velocidad * Math.cos(angulogradian));
-            this.posY = (int) Math.round(this.posY + this.velocidad * Math.sin(angulogradian));
-            this.recorrido = (int) (this.recorrido - this.velocidad);
+    //Metodo que mueve un elemento espacial a un t+1. (m refiere a x, n refiere a y)
+    public void moveElement(double angulo, double velocidad, double m, double n ) {
+        if (velocidad > 0){
+            this.velocidad += velocidad;
+            this.angulo += angulo;
+            double angulogradian = ToRadians(this.angulo);
+            this.posX = (this.posX + this.velocidad * Math.Cos(angulogradian)) % m;
+            this.posY = (this.posY + this.velocidad * Math.Sin(angulogradian)) % n;
+            this.recorrido -= this.velocidad*0.01;
+            if (this.posX <0){
+                this.posX = m;
+            }
+            if(this.posY < 0){
+               this.posY = m; 
+            }
+        }else{
+            this.angulo += angulo;
+            double angulogradian = ToRadians(this.angulo);            
+            this.posX = (this.posX + this.velocidad * Math.Cos(angulogradian)) % m;
+            this.posY = (this.posY + this.velocidad * Math.Sin(angulogradian)) % n;
+            this.recorrido -= this.velocidad*0.01;
+            if (this.posX < 0){
+                this.posX = m;
+            }
+            if (this.posY < 0){
+                this.posY = m;   
+            }
         }
-        else{
-            this.angulo = this.angulo + angulo;
-            double angulogradian = toRadians(this.angulo);
-            this.posX = (int) Math.round(this.posX + this.velocidad * Math.cos(angulogradian));
-            this.posY = (int) Math.round(this.posY + this.velocidad * Math.sin(angulogradian));
-            this.recorrido = (int) (this.recorrido - this.velocidad);
-        }
+    }
+
+    private double ToRadians(double angulo)
+    {
+        return (Math.PI / 180) * angulo;
     }
 
 

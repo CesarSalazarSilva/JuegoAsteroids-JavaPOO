@@ -145,7 +145,7 @@ public class GameSpace {
                             }
                         } while (velocidad < 0);
 
-                        SpaceShip naveModificar = espacio.getNave();
+                        Ship naveModificar = espacio.getNave();
                         naveModificar.moveElement(angulo,velocidad);
                         espacio.setNave( naveModificar );
                         //Mostrar px y py

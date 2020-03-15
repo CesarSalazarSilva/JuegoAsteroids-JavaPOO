@@ -11,7 +11,7 @@ public class Space {
 
     private ArrayList<Asteroid> asteroidList;
     private ArrayList<Shoot> shootList;
-    private SpaceShip nave;
+    private Ship nave;
 
     //Constructor de un Space
     public Space(int n, int m, int numAsteroides, int numPart, int firerange, int seed) {
@@ -24,7 +24,7 @@ public class Space {
 
         this.asteroidList = new ArrayList<Asteroid>();
         this.shootList = new ArrayList<Shoot>();
-        this.nave = new SpaceShip(0,0,0,0,0,0,0);
+        this.nave = new Ship(0,0,0,0,0,0,0);
     }
 
     public void createSpace(int n, int m, int numAsteroides, int numPart, int firerange, int seed){
@@ -38,7 +38,7 @@ public class Space {
         double posX = m/2;
         double posY = n/2;
 
-        this.nave = new SpaceShip(posX,posY,GameSpace.velocidadInicialNave,0,GameSpace.RadioNave,seed,2);
+        this.nave = new Ship(posX,posY,GameSpace.velocidadInicialNave,0,GameSpace.RadioNave,seed,2);
 
         int i = 0;
         int valorrandom = 14;
@@ -430,11 +430,11 @@ public class Space {
         this.shootList = shootList;
     }
 
-    public SpaceShip getNave() {
+    public Ship getNave() {
         return nave;
     }
 
-    public void setNave(SpaceShip nave) {
+    public void setNave(Ship nave) {
         this.nave = nave;
     }
 }
